@@ -1,0 +1,7 @@
+# List of plugins to be registered by framework.
+# Provide fully qualified class names here ( edu.cmu.cs.cs214.rec09.plugin.XXX ),
+# with one plugin per line.
+# cs.cmu.cs214.plugin.data.FakeDataPlugin
+cs.cmu.cs214.plugin.data.LocalFilePlugin
+cs.cmu.cs214.plugin.data.SpotifyPlugin
+cs.cmu.cs214.plugin.data.DeezerPlugin

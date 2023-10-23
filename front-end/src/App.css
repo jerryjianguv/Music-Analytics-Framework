@@ -1,0 +1,42 @@
+#dataplugins {
+    height: 5vh;
+}
+
+#visualplugins {
+    height: 50vh;
+}
+
+#dataplugins button {
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#visualplugins button {
+    width: 50%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    float: left;
+    font-size: 2vw
+}
+
+#datatextboxes {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: auto;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
