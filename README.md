@@ -1,6 +1,6 @@
 ## Music Analytics Framework
 
-Our framework aims to help users of various music services better analyze their playlists. Our framework allows users to input their playlist of choice and choose a visulization for their playlist. They can choose to analyze the frequent artists in their playlist, the duration of the songs in their playlist, or the sentiment of the songs in their playlist.
+Our framework aims to help users of various music services better analyze their playlists. Our framework allows users to input their playlist of choice and choose a visualization for their playlist. They can choose to analyze the frequent artists in their playlist, the duration of the songs in their playlist, or the sentiment of the songs in their playlist.
 
 ### Starting the framework
 
@@ -33,7 +33,7 @@ The `FrameworkImpl` class implements the methods required for the framework. The
 
 ### Plugins
 
-There are two types of plugins, `DataPlugin` and `VisualPlugin`. A `DataPlugin` is responsible for downloading raw data from a music platform and sending the data back to the framework. The `VisualPlugin` is responsible for displaying the processed data recieved from the framework in a particular format.
+There are two types of plugins, `DataPlugin` and `VisualPlugin`. A `DataPlugin` is responsible for downloading raw data from a music platform and sending the data back to the framework. The `VisualPlugin` is responsible for displaying the processed data received from the framework in a particular format.
 
 ### Data Plugins
 Our three data plugins are:
@@ -41,24 +41,24 @@ Our three data plugins are:
 2. Deezer
 3. Local File
 
-The first two plugins use their repsective APIs to make requests for data on public playlists. The third plugin parses a local CSV file. Each line in the local CSV file must be in the following format:
+The first two plugins use their respective APIs to make requests for data on public playlists. The third plugin parses a local CSV file. Each line in the local CSV file must be in the following format:
 
 `Title, Artist, Duration`
 
 and there is no header line.
 
-Our data plugins transform the data they retrieve into a uniform `JSONObject` which is then sent to the framework. We tried to keep the number of necessary methods as low as possible to allow for easy extensibility. Since most of our plugins would need to talk with other third-party libraries, it's easier to have less methods that the plugins need to implement to be able to communicate with the framework.
+Our data plugins transform the data they retrieve into a uniform `JSONObject` sent to the framework. We tried to keep the number of necessary methods as low as possible to allow for easy extensibility. Since most of our plugins would need to talk with other third-party libraries, it's easier to have fewer methods that the plugins need to implement to be able to communicate with the framework.
 
 ### Extensibility for Data Plugins
 
-There are many possible data plugins that could be implemented to work with our framework. For example:
+Many possible data plugins could be implemented to work with our framework. For example:
 1. YouTube Music
 2. Amazon Music
 3. Pandora
 4. JSON formatted local files
 5. Plain text local files
 
-These are just a select few of a number of other music services and local file representations that could be implemented.
+These are just a select few of several other music services and local file representations that could be implemented.
 
 ### Visual Plugins
 Our three visualization plugins are:
@@ -66,25 +66,23 @@ Our three visualization plugins are:
 2. A pie chart to visualize the distribution of artists in the playlist
 3. A parallel coordinates chart to visualize individual songs across both duration and sentiment
 
-To implement our charts, we used a third-party library called `EChart` which provided us with many options for the charts to use. We also thought of using a venn diagram to display sentiment, but `EChart` did not have any venn diagram functionality and we couldn't find another library that provided us with the same level of robustness and ease of use as `EChart`. We decided to stick with `EChart` for all three of our visualizations since it provided the best level of functionality.
+To implement our charts, we used a third-party library called `EChart` which provided us with many options for the charts to use. We also thought of using a venn diagram to display sentiment, but `EChart` did not have any Venn diagram functionality and we couldn't find another library that provided us with the same level of robustness and ease of use as `EChart`. We decided to stick with `EChart` for all three of our visualizations since it provided the best level of functionality.
 
 ### Extensibility for Visual Plugins
 
-There are many possible visual plugins that could be implemented to work with our framework. For example:
+Many possible visual plugins could be implemented to work with our framework. For example:
 1. Venn diagram to represent sentiment groups
 2. Sublists of the original playlist split by sentiment
 3. Sublists of the original playlist split by artist
 
-These are just a select few of a number of other data visualizations that could be implemented to work with the data from our framework.
+These are just a select few of several other data visualizations that could be implemented to work with the data from our framework.
 
 ### Data Processing
 
-We used a NLP/Machine Learning API called `StanfordCoreNLP` to process the sentiment of the songs in the passed playlist. Each song was labeled as:
+We used an NLP/Machine Learning API called `StanfordCoreNLP` to process the sentiment of the songs in the passed in playlist. Each song was labeled as:
 1. Positive -- if the song was deemed positive/happy
 2. Negative -- if the song was deemed negative/sad
-3. Neutral -- if the song was deeemed neither happy nor sad OR if a determination couldn't be made
+3. Neutral -- if the song was deemed neither happy nor sad OR if a determination couldn't be made
 
-### Discussion of changes from Milestone A
 
-In our initial design, our main goal was to give users the functionality to split a playlist of theirs into sublists based on various filters. Although we were intrigued by this idea, we were unsure if the idea fit the requirements of the project, and Milestone A hasn't been graded yet. With that in mind, we decided to switch our idea to more traditional data analysis. We chose to analyze the artist, sentiment, and duration of songs in a playlist and output the results of the analysis into more traditional data visualizations such as bar charts and pie charts rather than visualizing the split of playlists. It is still entirely possible to add a data visualization that does some sort of split on the playlists. Since our framework and plugins don't rely on each others' implementations, visualization plugins aren't limited to only traditional charts and could be extended to other forms.
 
